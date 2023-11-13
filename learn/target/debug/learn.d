@@ -1,1 +1,0 @@
-/Users/malinatrash/Library/Mobile\ Documents/com~apple~CloudDocs/develop/i-love-rust/learn/target/debug/learn: /Users/malinatrash/Library/Mobile\ Documents/com~apple~CloudDocs/develop/i-love-rust/learn/src/main.rs
