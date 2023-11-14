@@ -85,6 +85,82 @@ fn get_user_str() -> String {
     str
 }
 
+#[derive(Debug)]
+struct Person {
+    name: String,
+    lastname: String,
+    age: u8,
+    balance: f64
+}
+
+#[derive(Debug)]
+struct Tuple(i32, String, f32); // это структурный кортеж
+
+struct Triangle {
+    cat1: f64,
+    cat2: f64,
+}
+
+impl Triangle {
+    fn find_hyp(&self) -> f64 {
+        (self.cat1 * self.cat1 + self.cat2 * self.cat2).sqrt()
+    }
+
+    fn find_area(&self) -> f64 {
+        0.5 * self.cat1 * self.cat2
+    }
+
+    fn create_isc(cat: f64) -> Triangle {
+        Triangle { cat1: cat, cat2: cat }
+    }
+}
+
+fn structs() { 
+    let person1 = Person {
+        name: "p1 name".to_string(),
+        lastname: "p1 lastname".to_string(),
+        age: 19,
+        balance: 4441.1
+    };
+    print!("{:#?}", person1);
+
+
+    let tr1 = Triangle {
+        cat1: 3.0,
+        cat2: 4.0
+    };
+    println!("hyp is: {}", tr1.find_hyp());
+    println!("area is: {}", tr1.find_area());
+    
+    let isc_tr = Triangle::create_isc(3.0);
+    println!("isc hyp is: {}", isc_tr.find_hyp());
+    println!("isc area is: {}", isc_tr.find_area());
+
+}
+
+#[derive(Debug)]
+struct ListNode {
+    value: i32,
+    next_node: Option<Box<ListNode>>,
+}
+
+impl ListNode {
+    fn print_node(&self) {
+        print!("{} ", self.value);
+        if let Some(next) = &self.next_node {
+            next.print_node();
+        }
+    }
+}
+
 fn main() {
-    print!("{}", get_user_str());
+    let head: ListNode = ListNode {
+        value: 124,
+        next_node: Some(Box::new(ListNode {
+            value: 141,
+            next_node: None,
+        })),
+    };
+
+    head.print_node();
 }
